@@ -1,0 +1,62 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<body id="bodyloginregister">
+    <div id="dashcontainer" class="d-block container bg-light shadow-md p-5 my-5">
+        <h3 class="text-center fw-bolder">ISSUED MEDICINE RECORD</h3>
+        <br>
+        <div id="medicinedetail1" class="my-5">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>VISIT NO</th>
+                        <th>MEDICINE</th>
+                        <th>QUANTITY</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for im in issuedmedicine %}
+                    <tr>
+                        <td>{{ im.visit_number }}</td>
+                        <td>{{ im.medicine }}</td>
+                        <td>{{ im.quantity_issued }}</td>
+                        <td>
+                            <form method="POST" action="{% url 'delete_issuedmedicine' im.id %}">
+                                {% csrf_token %}
+                                <button type="submit" class="btn btn-danger"><i class="fa-solid fa-xmark"></i></button>
+                            </form>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+
+        <div id="medicinedetail2" class="my-5">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>VISIT NO</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for im in issuedmedicine %}
+                    <tr>
+                        <td>{{ im.visit_number }}</td>
+                        <td><a href="{% url 'issuedmedsmall' im.id %}" class="btn btn-danger px-3 w-100">INFO</a>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        <div class="d-flex">
+            <button id="b4" class="btn btn-danger" data-url="{% url 'dash' %}"><i
+                    class="fa-solid fa-arrow-left"></i></button>
+        </div>
+    </div>
+</body>
+{% endblock content %}

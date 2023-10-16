@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% load crispy_forms_tags %}
+
+{% block content %}
+
+<body id="bodyloginregister">
+
+
+
+    <div id="dashcontainer" class="d-block container bg-light shadow-md p-5 my-5">
+        <h3 class="text-center fw-bolder">WELCOME {{user}}</h3>
+        <br>
+        <div id="dashbuttons" class="my-5">
+            <button id="b1" data-url="{% url 'medicine' %}" class="btn btn-primary my-4">ADD MEDICINES</button>
+            <button id="b2" data-url="{% url 'issue' %}" class="btn btn-primary my-4">ISSUE MEDICINES</button>
+            <button id="b3" data-url="{% url 'record' %}" class="btn btn-primary my-4">CHECK RECORD</button>
+            <button id="b5" data-url="{% url 'issuedmedicine' %}" class="btn btn-primary my-4">ISSUED MEDICINES</button>
+            <button id="b6" data-url="{% url 'logout' %}" class="btn btn-danger my-4">LOGOUT</button>
+        </div>
+    </div>
+</body>
+{% endblock content %}

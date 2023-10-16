@@ -1,0 +1,139 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<body id="bodyloginregister">
+    <div id="dashcontainer" class="d-block container bg-light shadow-md p-5 my-5">
+        <h3 class="text-center fw-bolder">{{ medicine.medicinename }} INVENTORY</h3>
+        <br>
+        <div id="medicinedetails" class="my-5">
+            <table class="table">
+                <tbody>
+                    <tr>
+                        <td>MEDICINE NAME</td>
+                        <td>{{ medicine.medicinename }}</td>
+                    </tr>
+                    <tr>
+                        <td>EXPIRY-DATE</td>
+                        <td>{{ medicine.expirydate }}</td>
+                    </tr>
+                    <tr>
+                        <td>MEDICINE-CATEGORY</td>
+                        <td>{{ medicine.get_category_display }}</td>
+                    </tr>
+                    <tr>
+                        <td>MEDICINE-QUANTITY</td>
+                        <td>{{ medicine.quantity }}</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <form method="POST" action="{% url 'delete_medicine' medicine.id %}">
+                                {% csrf_token %}
+                                <button type="submit" class="btn btn-primary"><i class="fa-solid fa-xmark"></i></button>
+                            </form>
+                        <td></td>
+                        </td>
+                    </tr>
+            </table>
+        </div>
+        <div class="d-flex">
+            <button id="b4" class="btn btn-danger" data-url="{% url 'dash' %}"><i
+                    class="fa-solid fa-arrow-left"></i></button>
+        </div>
+    </div>
+</body>
+{% endblock content %}
+
+<!-- <div class="card-body">
+    <table class="table">
+        <tbody>
+            <tr>
+                <td>Firm Name</td>
+                <td>{{ record.firmname }}</td>
+            </tr>
+            <tr>
+                <td>Firm Establishment</td>
+                <td>{{ record.firmest }}</td>
+            </tr>
+            <tr>
+                <td>NTN</td>
+                <td>{{ record.NTN }}</td>
+            </tr>
+            <tr>
+                <td>STRN</td>
+                <td>{{ record.STRN }}</td>
+            </tr>
+            <tr>
+                <td>Sponsor</td>
+                <td>{{ record.Sponser }}</td>
+            </tr>
+            <tr>
+                <td>Category</td>
+                <td>{{ record.category }}</td>
+            </tr>
+            <tr>
+                <td>Reason</td>
+                <td>{{ record.reason }}</td>
+            </tr>
+            <tr>
+                <td>From Date</td>
+                <td>{{ record.fromdate }}</td>
+            </tr>
+            <tr>
+                <td>To Date</td>
+                <td>{{ record.todate }}</td>
+            </tr>
+            <tr>
+                <td>Owner Name</td>
+                <td>{{ record.ownername }}</td>
+            </tr>
+            <tr>
+                <td>Owner CNIC</td>
+                <td>{{ record.ownercnic }}</td>
+            </tr>
+            <tr>
+                <td>Landline Number</td>
+                <td>{{ record.landlinenumber }}</td>
+            </tr>
+            <tr>
+                <td>Phone Number</td>
+                <td>{{ record.phonenumber }}</td>
+            </tr>
+            <tr>
+                <td>Owner Email</td>
+                <td>{{ record.owneremail }}</td>
+            </tr>
+            <tr>
+                <td>Website URL</td>
+                <td>{{ record.websiteurl }}</td>
+            </tr>
+            <tr>
+                <td>Address</td>
+                <td>{{ record.address }}</td>
+            </tr>
+            <tr>
+                <td>BAN</td>
+                <td>{{ record.BAN }}</td>
+            </tr>
+            <tr>
+                <td>STATUS</td>
+                {% if record.status == 'ACTIVE' %}
+                <td class="bg-success text-light text-center">{{record.status}}</td>
+                {% else %}
+                <td class="bg-danger text-light text-center">{{record.status}}</td>
+                {% endif %}
+            </tr>
+            <tr>
+                <td>Upload File</td>
+                <td>
+                    {% if image_path_or_url %}
+                    <p>
+                        <a href="{{ image_path_or_url }}" download>Download PDF</a>
+                    </p>
+                    {% else %}
+                    <p>No PDF available</p>
+                    {% endif %}
+                </td>
+            </tr>
+        </tbody>
+    </table> -->

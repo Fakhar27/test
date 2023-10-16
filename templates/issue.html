@@ -1,0 +1,59 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<body id="bodyloginregister">
+    <div id="dashcontainer" class="d-block container bg-light shadow-md p-5 my-5">
+        <h3 class="text-center fw-bolder">ISSUE MEDICINE</h3>
+        <br>
+        {% if messages %}
+        <div class="alert alert-danger">
+            <ul>
+                {% for message in messages %}
+                <li>{{ message }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+        {% endif %}
+        <form method="POST" autocomplete="off">
+            {% csrf_token %}
+            <div class="d-block">
+                <div>
+                    <div class="input-group">
+                        <label class="label">VISIT NUMBER</label>
+                        <input class="input--style-4" id="quantity" type="text" name="visitno" pattern="[0-9]*">
+                    </div>
+                </div>
+            </div>
+            <div class="input-group d-block">
+                <label class="label">MEDICINE</label>
+                <div class="rs-select2 js-select-simple select--no-search">
+                    <select name="medicine">
+                        <option disabled="disabled" selected="selected">CHOOSE MEDICINE</option>
+                        {% for medicine in medicines %}
+                        <option value="{{ medicine.id }}">{{ medicine.medicinename }}</option>
+                        {% endfor %}
+                    </select>
+                    <div class="select-dropdown"></div>
+                </div>
+            </div>
+            <div class="d-block">
+                <div>
+                    <div class="input-group">
+                        <label class="label">QUANTITY</label>
+                        <input class="input--style-4" id="quantityissue" type="text" name="quantityissue"
+                            pattern="[0-9]*">
+                    </div>
+                </div>
+            </div>
+            <div class="p-t-15">
+                <button type="submit" class="btn btn-primary w-100 p-2 btn-block">ISSUE MEDICINE</button>
+            </div>
+        </form>
+        <div class="d-flex mt-5">
+            <button id="b4" class="btn btn-danger" data-url="{% url 'dash' %}"><i
+                    class="fa-solid fa-arrow-left"></i></button>
+        </div>
+    </div>
+</body>
+{% endblock content %}

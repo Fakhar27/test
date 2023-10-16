@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+
+<body id="bodyloginregister">
+
+
+    <div id="form-layout" class="container bg-light shadow-md p-5 my-5">
+        <h3 class="text-center fw-bolder">CREATE YOUR ACCOUNT</h3>
+        <h6 class="text-center">PLEASE ENTER VALID CREDENTIALS</h6>
+        <hr>
+        <br>
+        <form method="POST" action="{% url 'register' %}">
+            {% csrf_token %}
+            {{form|crispy}}
+            <br>
+            <button type="submit" class="btn btn-primary w-100 p-2 btn-block">CREATE ACCOUNT</button>
+        </form>
+        <br>
+        <div class="text-center">
+            <p>ALREADY HAVE AN ACCOUNT?? <a href="{% url 'login' %}"> LOGIN</a></p>
+        </div>
+        <br>
+    </div>
+</body>
+
+{% endblock content %}

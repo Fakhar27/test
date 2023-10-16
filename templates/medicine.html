@@ -1,0 +1,79 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<body id="bodyloginregister">
+    <div id="dashcontainer" class="d-block container bg-light shadow-md p-5 my-5">
+        <h3 class="text-center fw-bolder">ADD MEDICINE</h3>
+        <br>
+        <form method="POST" autocomplete="off">
+            {% csrf_token %}
+            <div class="d-block d-none">
+                <div>
+                    <div class="input-group">
+                        <label class="label">VISIT NUMBER</label>
+                        <input class="input--style-4" id="quantity" type="text" name="visitno" pattern="[0-9]*">
+                    </div>
+                </div>
+            </div>
+            <div class="d-block">
+                <div>
+                    <div class="input-group">
+                        <label class="label">MEDICINE-NAME</label>
+                        <input class="input--style-4" type="text" name="medicinename">
+                    </div>
+                </div>
+            </div>
+            <div class="input-group d-block">
+                <label class="label">CATEGORY</label>
+                <div class="rs-select2 js-select-simple select--no-search">
+                    <select name="category">
+                        <option disabled="disabled" selected="selected">CHOOSE OPTION</option>
+                        <option value="0">...</option>
+                        <option value="SYRUP">SYRUP</option>
+                        <option value="TABLETS">TABLETS</option>
+                        <option value="OTHERS">OTHERS</option>
+                    </select>
+                    <div class="select-dropdown"></div>
+                </div>
+            </div>
+            <div class="d-block">
+                <div>
+                    <div class="input-group d-block">
+                        <label class="label">EXPIRY-DATE</label>
+                        <div class="input-group-icon">
+                            <input class="input--style-4 js-datepicker" autocomplete="off" type="text" name="expirydate"
+                                data-date-format="mm/dd/yyyy">
+                            <i class="zmdi zmdi-calendar-note input-icon js-btn-calendar"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="d-block">
+                <div>
+                    <div class="input-group">
+                        <label class="label">QUANTITY</label>
+                        <input class="input--style-4" id="quantity" type="text" name="quantity" pattern="[0-9]*">
+                    </div>
+                </div>
+            </div>
+            <div class="d-block d-none">
+                <div>
+                    <div class="input-group">
+                        <label class="label">QUANTITY</label>
+                        <input class="input--style-4" id="quantityissue" type="text" name="quantityissue"
+                            pattern="[0-9]*">
+                    </div>
+                </div>
+            </div>
+            <div class="p-t-15">
+                <button type="submit" class="btn btn-primary w-100 p-2 btn-block">ADD MEDICINE</button>
+            </div>
+        </form>
+        <div class="d-flex mt-5">
+            <button id="b4" class="btn btn-danger" data-url="{% url 'dash' %}"><i
+                    class="fa-solid fa-arrow-left"></i></button>
+        </div>
+    </div>
+</body>
+{% endblock content %}
